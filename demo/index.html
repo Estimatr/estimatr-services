@@ -11,6 +11,7 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../estimatr-service-edit.html">
+    <link rel="import" href="../estimatr-service-list.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -20,6 +21,7 @@
       <h3>estimatr-service-edit</h3>
       <demo-snippet>
         <template>
+          <estimatr-services-list services='[{ "name": "Writing", "sku": "WRI", "price": "80" }, { "name": "Production", "sku": "PRO", "price": "110" }, { "name": "Post", "sku": "POST", "price": "50" }]'></estimatr-services-list>
           <estimatr-service-edit></estimatr-service-edit>
         </template>
       </demo-snippet>

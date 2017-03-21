@@ -26,8 +26,7 @@
         margin: 30px;
       }
     </style>
-    <h2>Services</h2>
-    <p>Enter New Serice Below</p>
+    <h2>Service Edit</h2>
 
     <iron-form id="form" on-iron-form-presubmit="saveService">
       <form>
@@ -63,7 +62,7 @@
   </template>
 
   <script>
-    class MyElement extends Polymer.Element {
+    class ServiceEdit extends Polymer.Element {
       static get is() { return 'estimatr-service-edit'; }
       static get properties() {
         return {
@@ -120,6 +119,6 @@
       }
     }
 
-    window.customElements.define(MyElement.is, MyElement);
+    window.customElements.define(ServiceEdit.is, ServiceEdit);
   </script>
 </dom-module>
