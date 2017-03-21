@@ -1,0 +1,126 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+<link rel="import" href="../iron-form/iron-form.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-input/paper-textarea.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<dom-module id="estimatr-service-edit">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+      #add {
+        color: green;
+      }
+      #remove {
+        color: red;
+        float: right;
+      }
+      paper-button {
+        margin: 30px;
+      }
+    </style>
+    <h2>Services</h2>
+    <p>Enter New Serice Below</p>
+
+    <iron-form id="form" on-iron-form-presubmit="updateService">
+      <form>
+        <paper-input id="sku" label="SKU" name="sku" value="{{ service.sku }}" required></paper-input>
+        <paper-input id="item-name" label="Item Name" name="item-name" value="{{ service.item }}" required></paper-input>
+        <label id="service-type" value="{{ service.type }}"></label>
+        <paper-radio-group aria-labelledby="label1">
+          <paper-radio-button>Service</paper-radio-button>
+          <paper-radio-button>Rental</paper-radio-button>
+        </paper-radio-group>
+        <br>
+        <paper-dropdown-menu value="{{ service.category }}" label="Category" vertical-align="top" horizontal-align="left">
+          <paper-listbox class="dropdown-content" selected="1">
+            <paper-item>Pre-Production</paper-item><br>
+            <paper-item>Production</paper-item><br>
+            <paper-item>Post Production</paper-item><br>
+            <paper-item>Equipment</paper-item><br>
+          </paper-listbox>
+        </paper-dropdown-menu>
+        <paper-textarea id="description" label="Description" value="{{ service.description }}" required></paper-textarea>
+        <paper-input id="cost" label="$ Cost" value="{{ service.cost }}" on-change="_inputChanged"></paper-input>
+        <paper-input id="price" label="$ Price" value="{{ service.price }}" on-change="_inputChanged"></paper-input>
+        <paper-input id="profit" label="$ Profit" value="{{ service.profit }}" readonly></paper-input>
+        <paper-input id="margin" label="Margin %" value="{{ service.margin }}" readonly></paper-input>
+        <paper-textarea id="notes" label="Notes" value="{{ service.notes }}"></paper-textarea>
+
+        <paper-button id="add" on-tap="addService" raised>Add</paper-button>
+        <paper-button id="submit" on-tap="updateService" raised>Update</paper-button>
+        <paper-button id="remove" on-tap="removeService" raised>Remove</paper-button>
+
+      </form>
+    </iron-form>
+  </template>
+
+  <script>
+    class MyElement extends Polymer.Element {
+      static get is() { return 'estimatr-service-edit'; }
+      static get properties() {
+        return {
+          service: {
+            type: Object,
+            notify: true,
+            reflectToAttribute: true,
+            value: () => ({ cost: 80, price: 100, profit: 20, margin: 20 }),
+          }
+        }
+      }
+
+      static get observers() {
+      }
+
+      _serviceChange(newValue) {
+        console.log(newValue);
+        if (newValue.path !== 'service.profile') {
+          this.service.profit = this.service.price - this.service.cost;
+          this.service.margin = (this.service.profit / this.service.price) * 100;
+          console.log(this.service.margin);
+        }
+      }
+
+      _calculateProfitFromCost(value, newValue) {
+        this.service.profit = this.service.price - newValue;
+      }
+      _calculateProfitFromPrice(value, newValue) {
+        this.service.profit = newValue - this.service.cost;
+      }
+      _calculateMargin(value, newValue) {
+        this.service.margin = (newValue / this.service.price) * 100;
+      }
+      _inputChanged(e) {
+        console.log(e);
+        this.set('service.profit', this.service.price - this.service.cost);
+        this.set('service.margin', (this.service.profit / this.service.price) * 100);
+      }
+      updateService(e, data) {
+        const valid = this.$.form.validate();
+        if (valid) {
+          this.service.price = parseFloat(this.service.price);
+          this.service.cost = parseFloat(this.service.cost);
+          this.service.profit = parseFloat(this.service.profit);
+          this.service.margin = parseFloat(this.service.margin);
+          this.dispatchEvent(new CustomEvent('valid-service', this.service));
+        }
+      }
+      removeService(e, data) {
+
+      }
+      addService(e, data) {
+
+      }
+    }
+
+    window.customElements.define(MyElement.is, MyElement);
+  </script>
+</dom-module>
