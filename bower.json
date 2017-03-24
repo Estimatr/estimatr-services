@@ -1,7 +1,7 @@
 {
-  "name": "services-page",
+  "name": "estimatr-services",
   "description": "add new service element",
-  "main": "services-page.html",
+  "main": "index.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0-rc.2",
     "iron-form": "PolymerElements/iron-form#2.0-preview",
@@ -14,7 +14,8 @@
     "paper-button": "PolymerElements/paper-button#2.0-preview",
     "paper-item": "PolymerElements/paper-item#2.0-preview",
     "paper-fab": "PolymerElements/paper-fab#2.0-preview",
-    "polymerfire": "firebase/polymerfire#2.0-preview"
+    "polymerfire": "firebase/polymerfire#2.0-preview",
+    "iron-icons": "polymerelements/iron-icons#2.0-preview"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
