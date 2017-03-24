@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-button/paper-button.html">
 
 <dom-module id="estimatr-services-detail">
   <template>
@@ -14,6 +16,10 @@
     </style>
     <h2>Services Detail</h2>
 
+    <section>
+          <paper-item>[[service.name]] [[service.sku]] [[service.price]]</paper-item>
+
+    </section>
     </template>
 
   <script>
@@ -22,7 +28,7 @@
 
       static get properties() {
         return {
-          services: {
+          service: {
             type: Object,
             notify: true,
             reflectToAttribute: true,

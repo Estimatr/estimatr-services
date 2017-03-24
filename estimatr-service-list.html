@@ -46,6 +46,7 @@
   <script>
     class ServicesList extends Polymer.Element {
       static get is() { return 'estimatr-services-list'; }
+
       static get properties() {
         return {
           services: {
@@ -70,7 +71,8 @@
       _fireServiceSelected(index = -1) {
         if (index > -1) {
           const service = this.services[index];
-          this.dispatchEvent(new CustomEvent('service-selected', {index, service }));
+          console.log(service);
+          this.dispatchEvent(new CustomEvent('service-selected', { detail: { index, service } }));
         }
       }
 

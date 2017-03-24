@@ -1,7 +1,7 @@
 {
-  "name": "services-new-element",
+  "name": "services-page",
   "description": "add new service element",
-  "main": "services-new-element.html",
+  "main": "services-page.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0-rc.2",
     "iron-form": "PolymerElements/iron-form#2.0-preview",
@@ -13,7 +13,8 @@
     "paper-listbox": "PolymerElements/paper-listbox#2.0-preview",
     "paper-button": "PolymerElements/paper-button#2.0-preview",
     "paper-item": "PolymerElements/paper-item#2.0-preview",
-    "paper-fab": "PolymerElements/paper-fab#2.0-preview"
+    "paper-fab": "PolymerElements/paper-fab#2.0-preview",
+    "polymerfire": "firebase/polymerfire#2.0-preview"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
@@ -22,6 +23,6 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5"
   },
   "resolutions": {
-    "polymer": "^2.0.0-rc.2"
+    "polymer": "2.0-preview"
   }
 }
