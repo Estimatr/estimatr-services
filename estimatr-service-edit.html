@@ -28,7 +28,7 @@
     </style>
 
 
-    <h2>Service Edit</h2>
+    <h2>Edit Service</h2>
 
     <iron-form id="form" on-iron-form-presubmit="saveService">
       <form>
@@ -56,7 +56,7 @@
         <paper-textarea id="notes" label="Notes" value="{{ service.notes }}"></paper-textarea>
 
         <paper-button id="submit" on-tap="saveService" raised>Save</paper-button>
-        <paper-button id="add" on-tap="addService" raised>Add</paper-button>
+        <paper-button id="add" on-tap="updateService" raised>Update</paper-button>
         <paper-button id="remove" on-tap="removeService" raised>Remove</paper-button>
 
       </form>
@@ -110,13 +110,13 @@
           this.service.cost = parseFloat(this.service.cost);
           this.service.profit = parseFloat(this.service.profit);
           this.service.margin = parseFloat(this.service.margin);
-          this.dispatchEvent(new CustomEvent('valid-service', this.service));
+          this.dispatchEvent(new CustomEvent('valid-service', {detail: this.service}));
         }
       }
       removeService(e, data) {
 
       }
-      addService(e, data) {
+      updateService(e, data) {
 
       }
     }
