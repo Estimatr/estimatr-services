@@ -13,6 +13,7 @@
     <link rel="import" href="../estimatr-service-edit.html">
     <link rel="import" href="../estimatr-service-list.html">
     <link rel="import" href="../estimatr-service-detail.html">
+    <link rel="import" href="../estimatr-services-dropdown.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -24,6 +25,7 @@
         <template>
           <estimatr-services-list services='[{ "name": "Writing", "sku": "SKU: WRI", "price": "PRICE: $80" }, { "name": "Production", "sku": "SKU: PRO", "price": "Price: $110" }, { "name": "Post", "sku": "SKU: POST", "price": "Price: $50" }]'></estimatr-services-list>
           <estimatr-services-detail></estimatr-services-detail>
+          <estimatr-services-dropdown services='[{ "name": "Writing", "sku": "SKU: WRI", "price": "PRICE: $80" }, { "name": "Production", "sku": "SKU: PRO", "price": "Price: $110" }]'></estimatr-services-dropdown>
           <estimatr-service-edit></estimatr-service-edit>
         </template>
       </demo-snippet>

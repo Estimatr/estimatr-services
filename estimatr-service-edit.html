@@ -25,6 +25,9 @@
       paper-button {
         margin: 30px;
       }
+      paper-item {
+        width: 175px;
+      }
     </style>
 
 
@@ -41,7 +44,7 @@
         </paper-radio-group>
         <br>
         <paper-dropdown-menu value="{{ service.category }}" label="Category" vertical-align="top" horizontal-align="left">
-          <paper-listbox class="dropdown-content" selected="1">
+          <paper-listbox class="dropdown-content">
             <paper-item>Pre-Production</paper-item><br>
             <paper-item>Production</paper-item><br>
             <paper-item>Post Production</paper-item><br>

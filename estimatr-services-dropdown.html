@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+
+<dom-module id="estimatr-services-dropdown">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+      paper-item {
+        width: 175px;
+      }
+    </style>
+    <h2>Dropdown</h2>
+    <paper-dropdown-menu label="Services">
+      <paper-listbox class="dropdown-content">
+        <dom-repeat items="{{ services }}" as="service">
+          <template>
+            <paper-item>[[service.name]]</paper-item>
+          </template>
+        </dom-repeat>
+      </paper-listbox>
+    </paper-dropdown-menu>
+
+  </template>
+
+  <script>
+    class EstimatrServicesDropdown extends Polymer.Element {
+      static get is() { return 'estimatr-services-dropdown'; }
+
+      static get properties() {
+        return {
+          services: {
+            type: Array,
+            notify: true,
+            reflectToAttribute: true,
+            value: () => ([])
+          }
+        }
+      }
+    }
+
+    window.customElements.define(EstimatrServicesDropdown.is, EstimatrServicesDropdown);
+  </script>
+</dom-module>

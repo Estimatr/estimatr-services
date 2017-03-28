@@ -1,7 +1,7 @@
 {
   "name": "estimatr-services",
   "description": "add new service element",
-  "main": "index.html",
+  "main": "estimatr-service-list.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0-rc.2",
     "iron-form": "PolymerElements/iron-form#2.0-preview",
