@@ -16,22 +16,23 @@
         display: block;
         padding: 10px;
       }
+
       #add {
         color: green;
       }
+
       #remove {
         color: red;
       }
+
       paper-button {
         margin: 30px;
       }
+
       paper-item {
         width: 175px;
       }
     </style>
-
-
-    <h2>Edit Service</h2>
 
     <iron-form id="form" on-iron-form-presubmit="saveService">
       <form>
@@ -45,10 +46,14 @@
         <br>
         <paper-dropdown-menu value="{{ service.category }}" label="Category" vertical-align="top" horizontal-align="left">
           <paper-listbox class="dropdown-content">
-            <paper-item>Pre-Production</paper-item><br>
-            <paper-item>Production</paper-item><br>
-            <paper-item>Post Production</paper-item><br>
-            <paper-item>Equipment</paper-item><br>
+            <paper-item>Pre-Production</paper-item>
+            <br>
+            <paper-item>Production</paper-item>
+            <br>
+            <paper-item>Post Production</paper-item>
+            <br>
+            <paper-item>Equipment</paper-item>
+            <br>
           </paper-listbox>
         </paper-dropdown-menu>
         <paper-textarea id="description" label="Description" value="{{ service.description }}" required></paper-textarea>
@@ -69,6 +74,7 @@
   <script>
     class ServiceEdit extends Polymer.Element {
       static get is() { return 'estimatr-service-edit'; }
+
       static get properties() {
         return {
           service: {
@@ -95,17 +101,21 @@
       _calculateProfitFromCost(value, newValue) {
         this.service.profit = this.service.price - newValue;
       }
+
       _calculateProfitFromPrice(value, newValue) {
         this.service.profit = newValue - this.service.cost;
       }
+
       _calculateMargin(value, newValue) {
         this.service.margin = (newValue / this.service.price) * 100;
       }
+
       _inputChanged(e) {
         console.log(e);
         this.set('service.profit', this.service.price - this.service.cost);
         this.set('service.margin', (this.service.profit / this.service.price) * 100);
       }
+
       saveService(e, data) {
         const valid = this.$.form.validate();
         if (valid) {
@@ -113,12 +123,14 @@
           this.service.cost = parseFloat(this.service.cost);
           this.service.profit = parseFloat(this.service.profit);
           this.service.margin = parseFloat(this.service.margin);
-          this.dispatchEvent(new CustomEvent('valid-service', {detail: this.service}));
+          this.dispatchEvent(new CustomEvent('valid-service', { detail: this.service }));
         }
       }
+
       removeService(e, data) {
 
       }
+
       updateService(e, data) {
 
       }
