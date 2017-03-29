@@ -8,21 +8,17 @@
       :host {
         display: block;
       }
-
-      h2 {
-        margin-left: 6px;
-      }
-
     </style>
 
     <section>
-      <paper-item>[[service.name]] [[service.sku]] [[service.price]]</paper-item>
-
+      <template>
+        <paper-item>[[service.item]]</paper-item>
+      </template>
     </section>
   </template>
 
   <script>
-    class ServiceDetail extends Polymer.Element {
+    class EstimatrServiceDetail extends Polymer.Element {
       static get is() { return 'estimatr-services-detail'; }
 
       static get properties() {
@@ -37,6 +33,6 @@
       }
     }
 
-    window.customElements.define(ServiceDetail.is, ServiceDetail);
+    window.customElements.define(EstimatrServiceDetail.is, EstimatrServiceDetail);
   </script>
 </dom-module>

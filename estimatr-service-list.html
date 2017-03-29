@@ -35,7 +35,7 @@
       <paper-listbox on-iron-select="_serviceSelected" id="servicesListBox">
         <dom-repeat items="{{ services }}" as="service" filter="{{computeFilter(searchString)}}">
           <template>
-            <paper-item>[[service.name]]</paper-item>
+            <paper-item>[[service.item]]</paper-item>
           </template>
         </dom-repeat>
       </paper-listbox>
@@ -44,7 +44,7 @@
   </template>
 
   <script>
-    class ServicesList extends Polymer.Element {
+    class EstimatrServicesList extends Polymer.Element {
       static get is() { return 'estimatr-services-list'; }
 
       static get properties() {
@@ -94,6 +94,6 @@
       }
     }
 
-    window.customElements.define(ServicesList.is, ServicesList);
+    window.customElements.define(EstimatrServicesList.is, EstimatrServicesList);
   </script>
 </dom-module>
