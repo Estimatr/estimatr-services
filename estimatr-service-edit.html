@@ -17,14 +17,6 @@
         padding: 10px;
       }
 
-      #add {
-        color: green;
-      }
-
-      #remove {
-        color: red;
-      }
-
       paper-button {
         margin: 30px;
       }
@@ -36,7 +28,7 @@
 
     <iron-form id="form" on-iron-form-presubmit="saveService">
       <form>
-        <paper-input id="sku" label="SKU" name="sku" value="{{ service.sku }}" required></paper-input>
+        <paper-input id="sku" label="SKU" name="sku" value="{{ service.sku }}" required>{{ service }}</paper-input>
         <paper-input id="item-name" label="Item Name" name="item-name" value="{{ service.item }}" required></paper-input>
         <label id="service-type" value="{{ service.type }}"></label>
         <paper-radio-group aria-labelledby="label1">
@@ -64,8 +56,6 @@
         <paper-textarea id="notes" label="Notes" value="{{ service.notes }}"></paper-textarea>
 
         <paper-button id="submit" on-tap="saveService" raised>Save</paper-button>
-        <paper-button id="add" on-tap="updateService" raised>Update</paper-button>
-        <paper-button id="remove" on-tap="removeService" raised>Remove</paper-button>
 
       </form>
     </iron-form>
@@ -125,14 +115,6 @@
           this.service.margin = parseFloat(this.service.margin);
           this.dispatchEvent(new CustomEvent('valid-service', { detail: this.service }));
         }
-      }
-
-      removeService(e, data) {
-
-      }
-
-      updateService(e, data) {
-
       }
     }
 

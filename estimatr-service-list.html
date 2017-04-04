@@ -35,7 +35,7 @@
       <paper-listbox on-iron-select="_serviceSelected" id="servicesListBox">
         <dom-repeat items="{{ services }}" as="service" filter="{{computeFilter(searchString)}}">
           <template>
-            <paper-item>[[service.item]]</paper-item>
+            <paper-item><a href="[[_buildURL(service)]]">[[service.item]]</a></paper-item>
           </template>
         </dom-repeat>
       </paper-listbox>
@@ -49,6 +49,13 @@
 
       static get properties() {
         return {
+
+          baseURL: {
+            type: '',
+            reflectToAttribute: true,
+            value: '/services'
+          },
+
           services: {
             type: Array,
             notify: true,
@@ -71,7 +78,7 @@
       _fireServiceSelected(index = -1) {
         if (index > -1) {
           const service = this.services[index];
-          console.log(service);
+//          console.log(service);
           this.dispatchEvent(new CustomEvent('service-selected', { detail: { index, service } }));
         }
       }
@@ -91,6 +98,11 @@
 
       addNewService() {
 
+      }
+
+      _buildURL(service) {
+        console.log(service);
+        return `${this.baseURL}/detail/${service["$key"]}`
       }
     }
 

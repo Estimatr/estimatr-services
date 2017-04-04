@@ -2,24 +2,21 @@
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-button/paper-button.html">
 
-<dom-module id="estimatr-services-detail">
+<dom-module id="estimatr-service-detail">
   <template>
     <style>
       :host {
         display: block;
       }
     </style>
-
     <section>
-      <template>
-        <paper-item>[[service.item]]</paper-item>
-      </template>
+        <paper-item>[[ service ]]</paper-item>
     </section>
   </template>
 
   <script>
     class EstimatrServiceDetail extends Polymer.Element {
-      static get is() { return 'estimatr-services-detail'; }
+      static get is() { return 'estimatr-service-detail'; }
 
       static get properties() {
         return {
